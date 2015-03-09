@@ -1,3 +1,13 @@
+<% price_range = Product.where('price > 45').first %>
+<p>
+	Product Name: "<%= price_range.name %>" costs $<%= price_range.price %>
+</p>
+
+<p>
+	Seller Name: "<%= price_range.user.name %>"
+</p>
+<br>
+
 <h2> I AMA View </h2>
 <p>
   Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
