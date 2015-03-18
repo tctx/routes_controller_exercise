@@ -1,14 +1,10 @@
-<% price_range = Product.where('price > 45').first %>
-<p>
-	Product Name: "<%= price_range.name %>" costs $<%= price_range.price %>
-</p>
+<%= select_tag(:ptag, options_for_select([[55, 55], [100, 100], [400, 400]])) %>
+<% lots_of_products = Product.where('price > 37 and price < 550') %>
 
-<p>
-	Seller Name: "<%= price_range.user.name %>"
-</p>
-<br>
-
-<h2> I AMA View </h2>
-<p>
-  Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
-</p>
+<ol>
+  <% lots_of_products.each do |product| %>
+    <li>
+      <%= product.name %> costs $<%= product.price %> and is sold by <%= product.user.name %>
+    </li>
+  <% end %>
+</ol>
